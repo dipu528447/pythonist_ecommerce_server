@@ -17,6 +17,7 @@ async function run(){
   try{
     const products = client.db("pythonist-ecommerce").collection("products");
     const orders = client.db("pythonist-ecommerce").collection("orders");
+    const checkOut = client.db("pythonist-ecommerce").collection("checkout");
     app.get('/',async(req,res)=>{
       res.send('hello world')
     })
@@ -33,6 +34,7 @@ async function run(){
       const result = await orders.insertOne(newProduct);
       res.send(result);
     });
+    
     app.delete('/removeToCart/:id', async(req,res)=>{
       const id=req.params.id;
       console.log(id)
